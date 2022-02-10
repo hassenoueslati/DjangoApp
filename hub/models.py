@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 # Create your models here.
 
 class User(models.Model):
@@ -16,7 +16,9 @@ class Coach(User):
 class Projet(models.Model):
     project_name=models.CharField(max_length=50)
     dure=models.IntegerField()
-    temp_allocated=models.IntegerField(validators=[MinValueValidator(1,"le temps min doit etre 1 heure")])
+    temp_allocated=models.IntegerField(validators=[MinValueValidator(1,"le temps min doit etre 1 heure"),
+    MaxValueValidator(5,"le temps max doit etre 5 heure")
+    ])
     besoin=models.TextField(max_length=250)
     description=models.TextField(max_length=250)
     isValid=models.BooleanField(default=False)
