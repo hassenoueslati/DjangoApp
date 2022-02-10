@@ -1,11 +1,24 @@
+from multiprocessing import Value
+from this import d
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.exceptions import ValidationError
 # Create your models here.
+
+def is_Esprit_Email(value):
+    if not str(value).endswith('@esprit.tn'):
+        raise ValidationError(
+            'Your email must be @esprit.tn', params={'value':value})
+    return value
 
 class User(models.Model):
     first_name=models.CharField(max_length=50)
     last_name=models.CharField(max_length=50)
-    email=models.EmailField() #de base Chrafield
+    email=models.EmailField(
+        verbose_name="Email", 
+        null=False, 
+        validators=[is_Esprit_Email, ] 
+    ) #de base Chrafield
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name}"
     
