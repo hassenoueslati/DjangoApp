@@ -1,0 +1,18 @@
+<ul>
+    <h1>list students</h1>
+    {% for s in students %} 
+      
+        <li> {{s.first_name}}   </li>
+        <li> {{s.last_name}}   </li>
+        <li> {{s.email}}   </li>
+        <br>
+    {% endfor %}
+    <h1>list coachs</h1>
+    {% for c in coachs %} 
+        <li> {{c.first_name}}   </li>
+        <li> {{c.last_name}}   </li>
+        <li> {{c.email}}   </li>
+        <br>
+    {% endfor %}
+    
+</ul>
