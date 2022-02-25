@@ -1,18 +1,56 @@
-<ul>
+{% extends 'base.html' %}
+
+{% block title %} 
+        welcome page 
+{% endblock title %}
+{% block content %}
+
     <h1>list students</h1>
-    {% for s in students %} 
-      
-        <li> {{s.first_name}}   </li>
-        <li> {{s.last_name}}   </li>
-        <li> {{s.email}}   </li>
-        <br>
-    {% endfor %}
-    <h1>list coachs</h1>
-    {% for c in coachs %} 
-        <li> {{c.first_name}}   </li>
-        <li> {{c.last_name}}   </li>
-        <li> {{c.email}}   </li>
-        <br>
-    {% endfor %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+             
+          <tr>
+            {% for s in object_list %}
+            <td>{{s.first_name}} </td>
+            <td>{{s.last_name}} </td>
+            <td>{{s.email}} </td>
+          </tr>
+          
+          
+        </tbody>
+        {% endfor %}
+      </table>
+      <h1>list coachs</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+             
+          <tr>
+            {% for C in coachs %}
+            <td>{{C.first_name}} </td>
+            <td>{{C.last_name}} </td>
+            <td>{{C.email}} </td>
+          </tr>
+          
+          
+        </tbody>
+        {% endfor %}
+      </table>
     
-</ul>
+    
+
+{% endblock content%}
+
