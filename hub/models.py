@@ -1,5 +1,7 @@
+from django.urls import reverse
 from multiprocessing import Value
 from this import d
+from django.shortcuts import redirect
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.core.exceptions import ValidationError
@@ -23,6 +25,9 @@ class User(models.Model):
         return f"{self.first_name} {self.last_name}"
     
 class Student(User):
+    def get_absolute_url(self):
+        return reverse('student')
+    
     pass
 class Coach(User):
     pass

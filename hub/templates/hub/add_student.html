@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {% comment %} <input type="text" name="first_name" placeholder="Votre prenom">
+        <input type="text" name="last_name" placeholder="Votre nom">
+        <input type="email" name="email" placeholder="Votre email">
+         {% endcomment %}
+        {{form}}
+        <input type="submit" >
+
+    </form>
+{% endblock content %}
