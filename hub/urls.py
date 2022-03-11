@@ -12,5 +12,7 @@ urlpatterns = [
     path('addStudent3',add_Student, name='addStudent3'),
     path('addStudent4',StudentCreateView.as_view(), name='addStudent4'),
     path('StudentUpdateView/<int:pk>',StudentUpdateView.as_view(),name='StudentUpdateView'),
+    path('StudentDeleteView/<int:pk>',StudentDeleteView.as_view(),name='StudentDeleteView'),
+    path('StudentDelete/<int:id>',student_delete, name='student_delete'),
 
 ]

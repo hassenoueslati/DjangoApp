@@ -1,7 +1,8 @@
 from re import template
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.views.generic import ListView, DetailView, CreateView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from hub.forms import StudentForm, StudentModelForm
 
 from hub.models import Coach, Student
@@ -112,3 +113,11 @@ class StudentUpdateView(UpdateView) :
     form_class = StudentModelForm
     template_name = "hub/add_student.html"
 
+class StudentDeleteView(DeleteView) :
+    model = Student
+    success_url = reverse_lazy('student')
+
+def student_delete(request, id) :
+    student = Student.objects.get(id=id)
+    student.delete()
+    return redirect('student')
