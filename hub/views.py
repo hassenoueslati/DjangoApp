@@ -106,3 +106,9 @@ class StudentCreateView(CreateView):
     template_name= "hub/add_student.html"
     # def get_success_url(self):
     #     return redirect('student')
+
+class StudentUpdateView(UpdateView) :
+    model = Student
+    form_class = StudentModelForm
+    template_name = "hub/add_student.html"
+
